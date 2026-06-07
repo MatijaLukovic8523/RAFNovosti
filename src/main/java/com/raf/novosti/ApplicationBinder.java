@@ -1,5 +1,6 @@
 package com.raf.novosti;
 
+import com.raf.novosti.controller.*;
 import com.raf.novosti.dao.*;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.Persistence;
@@ -17,6 +18,12 @@ public class ApplicationBinder extends AbstractBinder {
         bind(CategoryDAO.class).to(CategoryDAO.class).in(Singleton.class);
         bind(TagDAO.class).to(TagDAO.class).in(Singleton.class);
         bind(CommentDAO.class).to(CommentDAO.class).in(Singleton.class);
+
+        bind(NewsResource.class).to(NewsResource.class);
+        bind(UserResource.class).to(UserResource.class);
+        bind(CategoryResource.class).to(CategoryResource.class);
+        bind(AuthResource.class).to(AuthResource.class);
+        bind(TagResource.class).to(TagResource.class);
 
     }
 }

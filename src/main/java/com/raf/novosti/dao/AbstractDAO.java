@@ -46,6 +46,18 @@ public abstract class AbstractDAO<T, ID> implements DAO<T, ID> {
         } finally { em.close(); }
     }
 
+    public List<T> findAll(int page, int limit) {
+        EntityManager em = emf.createEntityManager();
+        try {
+            return em.createQuery("SELECT e FROM " + entityClass.getSimpleName() + " e ORDER BY e.id DESC", entityClass)
+                    .setFirstResult((page - 1) * limit)
+                    .setMaxResults(limit)
+                    .getResultList();
+        } finally {
+            em.close();
+        }
+    }
+
     //Transakcije
     protected void executeInTransaction(java.util.function.Consumer<EntityManager> action) {
         EntityManager em = emf.createEntityManager();

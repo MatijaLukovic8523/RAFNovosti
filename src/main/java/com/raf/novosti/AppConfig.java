@@ -6,7 +6,7 @@ import jakarta.ws.rs.ApplicationPath;
 @ApplicationPath("/api")
 public class AppConfig extends ResourceConfig {
     public AppConfig() {
-        packages("com.raf.novosti.controller");
+        packages("com.raf.novosti.controller", "com.raf.novosti.filter");
         register(new ApplicationBinder());
     }
 }
